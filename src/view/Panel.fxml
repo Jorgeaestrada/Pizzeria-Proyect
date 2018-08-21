@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PanelViewController">
+    <children>
+        <TabPane prefHeight="768.0" prefWidth="1366.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <tabs>
+                <Tab text="Ventas">
+                    <content>
+                        <fx:include source="Sales.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Clientes">
+                    <content>
+                        <fx:include source="Clientes.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Empleados">
+                    <content>
+                        <fx:include source="Empleados.fxml" />
+                    </content>
+                </Tab>
+                <Tab text="Reportes" />
+                <Tab text="Configuraciones" />
+            </tabs>
+        </TabPane>
+    </children>
+</AnchorPane>
