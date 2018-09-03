@@ -2,6 +2,11 @@ package interfaces;
 
 import java.util.List;
 
+/**
+ * FULL TESTED CRUD INTERFACE!!
+ * @param <T>
+ */
+
 public interface CRUDInterface<T> {
 
     public boolean create(T c);

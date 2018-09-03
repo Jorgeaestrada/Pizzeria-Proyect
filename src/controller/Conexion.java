@@ -1,6 +1,5 @@
 package controller;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -8,7 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 
-//FLL TESTED CLASS-----------------------------------------------------------------------
+/**
+ * FULL TESTED CLASS
+ */
+
 public class Conexion {
 
     public static Conexion instance;

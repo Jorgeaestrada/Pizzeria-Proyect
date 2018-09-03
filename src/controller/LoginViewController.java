@@ -1,5 +1,5 @@
 package controller;
-//CLASE DEPURADA
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -15,10 +15,13 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import javax.swing.JOptionPane;
-import model.Empleado;
+import model.Employee;
 import dao.LoginDao;
 
-//FULL TESTED CLASS
+/**
+ * PENDIENTE DE REVISIÓN!!
+ */
+
 public class LoginViewController implements Initializable {
     
 
@@ -32,7 +35,7 @@ public class LoginViewController implements Initializable {
     @FXML
     public void login(ActionEvent event) throws IOException {
 
-        Empleado empleado = new Empleado();
+        Employee empleado = new Employee();
         
         Parent parent = FXMLLoader.load(getClass().getResource("/view/Panel.fxml"));
         Scene scene = new Scene(parent);

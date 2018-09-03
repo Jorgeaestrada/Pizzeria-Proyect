@@ -5,18 +5,20 @@ import interfaces.LoginInterface;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import model.Empleado;
+import model.Employee;
 
-//REVISADO
+/**
+ * PENDIENTE DE REVISIÓN!!
+ */
 
 public class LoginDao implements LoginInterface {
 
-    private static final String SQL_READ = "SELECT * FROM Empleado WHERE usuario = ?";
+    private static final String SQL_READ = "SELECT * FROM model.Empleado WHERE usuario = ?";
 
     private static final Conexion conexion = Conexion.getInstance();
 
     @Override
-    public boolean authenticate(Empleado e) {
+    public boolean authenticate(Employee e) {
         PreparedStatement preparedStatement;
         ResultSet resultSet;
 

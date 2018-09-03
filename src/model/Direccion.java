@@ -3,80 +3,90 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-//FULL TESTED CLASS
+/**
+ * FULL TESTED CLASS!!
+ */
+
 public class Direccion {
 
-    private final SimpleIntegerProperty idDireccion;
-    private final SimpleIntegerProperty street;
-    private final SimpleIntegerProperty houseNumber;
-    private final SimpleIntegerProperty crossing_1;
-    private final SimpleIntegerProperty crossing_2;
-    private final SimpleStringProperty colony;
-    private final SimpleIntegerProperty idCliente;
+    private SimpleIntegerProperty idAddress;
+    private SimpleIntegerProperty street;
+    private SimpleIntegerProperty numeration;
+    private SimpleIntegerProperty crossing_1;
+    private SimpleIntegerProperty crossing_2;
+    private SimpleStringProperty colony;
+    private SimpleIntegerProperty idClientes;
 
-    public Direccion() {
-        this.idDireccion = new SimpleIntegerProperty(0);
-        this.street = new SimpleIntegerProperty(0);
-        this.houseNumber = new SimpleIntegerProperty(0);
-        this.crossing_1 = new SimpleIntegerProperty(0);
-        this.crossing_2 = new SimpleIntegerProperty(0);
-        this.colony = new SimpleStringProperty("");
-        this.idCliente = new SimpleIntegerProperty(0);
-    }
+    public Direccion(){};
 
-    public Direccion(int idDireccion, int street, int houseNumber, int crossing_1, int crossing_2, String colony, int idCliente) {
-        this.idDireccion = new SimpleIntegerProperty(idDireccion);
+    public Direccion(int idAddress, int street, int numeration, int crossing_1, int crossing_2,
+                     String colony, int idClientes) {
+        this.idAddress = new SimpleIntegerProperty(idAddress);
         this.street = new SimpleIntegerProperty(street);
-        this.houseNumber = new SimpleIntegerProperty(houseNumber);
+        this.numeration = new SimpleIntegerProperty(numeration);
         this.crossing_1 = new SimpleIntegerProperty(crossing_1);
         this.crossing_2 = new SimpleIntegerProperty(crossing_2);
         this.colony = new SimpleStringProperty(colony);
-        this.idCliente = new SimpleIntegerProperty(idCliente);
+        this.idClientes = new SimpleIntegerProperty(idClientes);
     }
 
-    @Override
-    public String toString() {
-        return "Calle   " + getStreet() + "   #" + getHouseNumber() + "   x   " + getCrossing1() + "   y   "
-                + getCrossing2() + "  " + getColony();
+    public int getIdAddress() {
+        return idAddress.get();
     }
 
-    public int getIdDireccion() {
-        return idDireccion.get();
+    public SimpleIntegerProperty idAddressProperty() {
+        return idAddress;
     }
 
-    public void setIdDireccion(int idDireccion) {
-        this.idDireccion.set(idDireccion);
+    public void setIdAddress(int idAddress) {
+        this.idAddress.set(idAddress);
     }
 
     public int getStreet() {
         return street.get();
     }
 
+    public SimpleIntegerProperty streetProperty() {
+        return street;
+    }
+
     public void setStreet(int street) {
         this.street.set(street);
     }
 
-    public int getHouseNumber() {
-        return houseNumber.get();
+    public int getNumeration() {
+        return numeration.get();
     }
 
-    public void setHouseNumber(int houseNumber) {
-        this.houseNumber.set(houseNumber);
+    public SimpleIntegerProperty numerationProperty() {
+        return numeration;
     }
 
-    public int getCrossing1() {
+    public void setNumeration(int numeration) {
+        this.numeration.set(numeration);
+    }
+
+    public int getCrossing_1() {
         return crossing_1.get();
     }
 
-    public void setCrossing1(int crossing_1) {
+    public SimpleIntegerProperty crossing_1Property() {
+        return crossing_1;
+    }
+
+    public void setCrossing_1(int crossing_1) {
         this.crossing_1.set(crossing_1);
     }
 
-    public int getCrossing2() {
+    public int getCrossing_2() {
         return crossing_2.get();
     }
 
-    public void setCrossing2(int crossing_2) {
+    public SimpleIntegerProperty crossing_2Property() {
+        return crossing_2;
+    }
+
+    public void setCrossing_2(int crossing_2) {
         this.crossing_2.set(crossing_2);
     }
 
@@ -84,16 +94,23 @@ public class Direccion {
         return colony.get();
     }
 
+    public SimpleStringProperty colonyProperty() {
+        return colony;
+    }
+
     public void setColony(String colony) {
         this.colony.set(colony);
     }
-    
-    public int getIdCliente() {
-        return idCliente.get();
+
+    public int getIdClientes() {
+        return idClientes.get();
     }
 
-    public void setIdCliente(int idCliente) {
-        this.idCliente.set(idCliente);
+    public SimpleIntegerProperty idClientesProperty() {
+        return idClientes;
     }
 
+    public void setIdClientes(int idClientes) {
+        this.idClientes.set(idClientes);
+    }
 }

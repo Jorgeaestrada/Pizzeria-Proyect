@@ -1,13 +1,9 @@
 package controller;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+/**
+ * CLASE CONTROLADORA DE MÓDULO DE ORDENES
+ */
 
-public class SalesViewController implements Initializable{
+public class SalesViewController {
 
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
-    
 }

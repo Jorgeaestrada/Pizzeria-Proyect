@@ -3,8 +3,11 @@ package model;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 
-//FULL TESTED CLASS
-public class Empleado {
+/**
+ * FULL TESTED CLASS!!
+ */
+
+public class Employee {
 
     private SimpleIntegerProperty idEmpleado;
     private SimpleStringProperty username;
@@ -12,7 +15,7 @@ public class Empleado {
     private SimpleStringProperty name;
     private SimpleStringProperty phoneNumber;
 
-    public Empleado() {
+    public Employee() {
         this.idEmpleado = new SimpleIntegerProperty(0);
         this.username = new SimpleStringProperty("");
         this.password = new SimpleStringProperty("");
@@ -20,8 +23,8 @@ public class Empleado {
         this.phoneNumber = new SimpleStringProperty("");
     }
 
-    public Empleado(int idEmpleado, String username, String password, String name,
-            String phoneNumber) {
+    public Employee(int idEmpleado, String username, String password, String name,
+                    String phoneNumber) {
         this.idEmpleado = new SimpleIntegerProperty(idEmpleado);
         this.username = new SimpleStringProperty(username);
         this.password = new SimpleStringProperty(password);
@@ -71,7 +74,7 @@ public class Empleado {
 
     @Override
     public String toString() {
-        return "Empleado{" + "idEmpleado=" + idEmpleado + ", username=" + username + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + '}';
+        return "model.Empleado{" + "idEmpleado=" + idEmpleado + ", username=" + username + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + '}';
     }
 
 }

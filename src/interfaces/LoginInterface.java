@@ -1,9 +1,13 @@
 package interfaces;
 
-import model.Empleado;
+import model.Employee;
+
+/**
+ * FULL TESTED LOGIN INTERFACE
+ */
 
 public interface LoginInterface {
 
-    public boolean authenticate(Empleado c);
+    public boolean authenticate(Employee c);
 
 }

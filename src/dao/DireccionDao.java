@@ -2,254 +2,100 @@ package dao;
 
 import controller.Conexion;
 import interfaces.CRUDInterface;
+import model.Direccion;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import model.Direccion;
 
-//FULL TESTED CLASS
+/**
+ * PENDIENTE DE REVISION!!
+ */
+
 public class DireccionDao implements CRUDInterface<Direccion> {
 
-    private int generatedId;
+    private static final String SQL_READ = "SELECT * FROM Direccion WHERE id_cliente = ?";
+
+    private final String SQL_READ_ALL = "SELECT * FROM Direccion";
 
     private static final Conexion conexion = Conexion.getInstance();
 
-    //CRUD
-    private static final String SQL_CREATE_ADDRESS = "INSERT INTO Direccion ("
-            + "calle, numeracion, cruzamiento_1, cruzamiento_2, colonia, id_cliente)"
-            + "VALUES (?, ?, ?, ?, ?, ?)";
-
-    private static final String SQL_READ_ADDRESS = "SELECT id_direccion, calle,   "
-            + "numeracion, cruzamiento_1, cruzamiento_2, colonia   "
-            + "FROM Direccion   "
-            + "WHERE id_cliente = ?";
-
-    private static final String SQL_UPDATE_ADDRESS = "UPDATE Direccion   "
-            + "Set   "
-            + "calle = ?,"
-            + "numeracion = ?,"
-            + "cruzamiento_1 = ?,"
-            + "cruzamiento_2 = ?,"
-            + "colonia = ?,"
-            + "id_cliente = ?   "
-            + "WHERE id_direccion = ?";
-
-    private static final String SQL_DELETE_ADDRESS = "DELETE FROM Direccion WHERE id_direccion = ?";
-
-    //EXTRAS
-    private static final String SQL_READ_ALL = "SELECT * From Direccion";
-
     @Override
-    public boolean create(Direccion d) {
-
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-        
-        //INSERTA REGISTROS EN LA TABLA DIRECCION
-        try {
-
-            preparedStatement = conexion.getConnection().prepareStatement(
-                    SQL_CREATE_ADDRESS, Statement.RETURN_GENERATED_KEYS);
-
-            preparedStatement.setInt(1, d.getStreet());
-            preparedStatement.setInt(2, d.getHouseNumber());
-            preparedStatement.setInt(3, d.getCrossing1());
-            preparedStatement.setInt(4, d.getCrossing2());
-            preparedStatement.setString(5, d.getColony());
-            preparedStatement.setInt(6, d.getIdCliente());
-
-            if (preparedStatement.executeUpdate() > 0) {
-                resultSet = preparedStatement.getGeneratedKeys();
-                if (resultSet.next()) {
-                    generatedId = resultSet.getInt(1);
-                    setGeneratedId(generatedId);
-                    System.out.println(generatedId);
-                    return true;
-
-                }
-
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                resultSet.close();
-                preparedStatement.close();
-                conexion.closeConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    public boolean create(Direccion c) {
         return false;
     }
 
     @Override
     public Direccion read(Object key) {
 
-        Direccion direccion = null;
+        Direccion direccion = new Direccion();
 
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
 
         try {
 
-            preparedStatement = conexion.getConnection().prepareStatement(SQL_READ_ADDRESS);
-
-            preparedStatement.setString(1, key.toString());
-
+            preparedStatement = conexion.getConnection().prepareStatement(SQL_READ);
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-
-                direccion = new Direccion();
-
-                direccion.setIdDireccion(resultSet.getInt(1));
-                direccion.setStreet(resultSet.getInt(2));
-                direccion.setHouseNumber(resultSet.getInt(3)); //DEVUELVE EL USUARIO
-                direccion.setCrossing1(resultSet.getInt(4)); //DEVUELVE LA CONTRASENIA
-                direccion.setCrossing2(resultSet.getInt(5));
-                direccion.setColony(resultSet.getString(6));
+                int id_direccion = resultSet.getInt(1);
+                int street = resultSet.getInt(2);
+                int  numeration = resultSet.getInt(3);
+                int  crossing_1 = resultSet.getInt(4);
+                int  crossing_2 = resultSet.getInt(5);
+                String  colonia = resultSet.getString(6);
+                int id_cliente = resultSet.getInt(7);
+                direccion = new Direccion(id_direccion, street, numeration,
+                        crossing_1, crossing_2, colonia, id_cliente);
             }
-            return direccion;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                resultSet.close();
-                preparedStatement.close();
-                conexion.closeConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
+
         return direccion;
     }
 
     @Override
-    public List<Direccion> readAll() {
-
-        Direccion direccion;
-
-        ArrayList<Direccion> arrayList = null;
-
-        PreparedStatement preparedStatement = null;
-        ResultSet resultSet = null;
-
-        try {
-
-            arrayList = new ArrayList<>();
-
-            preparedStatement = conexion.getConnection().prepareStatement(SQL_READ_ALL);
-            resultSet = preparedStatement.executeQuery();
-
-            while (resultSet.next()) {
-
-                direccion = new Direccion();
-
-                direccion.setIdDireccion(resultSet.getInt(1));
-                direccion.setStreet(resultSet.getInt(2)); //DEVUELVE EL USUARIO
-                direccion.setHouseNumber(resultSet.getInt(3)); //DEVUELVE LA CONTRASENIA
-                direccion.setCrossing1(resultSet.getInt(4));
-                direccion.setCrossing2(resultSet.getInt(5));
-                direccion.setColony(resultSet.getString(6));
-
-                arrayList.add(direccion);
-            }
-
-            return arrayList;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                resultSet.close();
-                preparedStatement.close();
-                conexion.closeConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
-
-        return arrayList;
-    }
-
-    @Override
-    public boolean update(Direccion d) {
-
-        PreparedStatement preparedStatement;
-
-        try {
-
-            preparedStatement = conexion.getConnection().prepareStatement(SQL_UPDATE_ADDRESS);
-
-            preparedStatement.setInt(1, d.getStreet());
-            preparedStatement.setInt(2, d.getHouseNumber());
-            preparedStatement.setInt(3, d.getCrossing1());
-            preparedStatement.setInt(4, d.getCrossing2());
-            preparedStatement.setString(5, d.getColony());
-            preparedStatement.setInt(6, d.getIdCliente());
-            preparedStatement.setInt(7, d.getIdDireccion());
-
-            if (preparedStatement.executeUpdate() > 0) {
-                return true;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            conexion.closeConnection();
-        }
+    public boolean update(Direccion c) {
         return false;
     }
 
     @Override
     public boolean delete(Object key) {
+        return false;
+    }
 
-        System.out.println("la clave de direccion dao es:   " + key.toString());
+    @Override
+    public List<Direccion> readAll() {
+        List<Direccion> direccions = new ArrayList<>();
 
-        PreparedStatement preparedStatement = null;
+        PreparedStatement preparedStatement;
+        ResultSet resultSet;
 
         try {
-            preparedStatement = conexion.getConnection().prepareStatement(
-                    SQL_DELETE_ADDRESS);
 
-            preparedStatement.setString(1, key.toString());
+            preparedStatement = conexion.getConnection().prepareStatement(SQL_READ_ALL);
+            resultSet = preparedStatement.executeQuery();
 
-            int res = preparedStatement.executeUpdate();
-
-            if (res > 0) {
-                System.out.println("Direccion eliminada");
-                return true;
+            while (resultSet.next()) {
+                int id_direccion = resultSet.getInt(1);
+                int street = resultSet.getInt(2);
+                int  numeration = resultSet.getInt(3);
+                int  crossing_1 = resultSet.getInt(4);
+                int  crossing_2 = resultSet.getInt(5);
+                String  colonia = resultSet.getString(6);
+                int id_cliente = resultSet.getInt(7);
+                Direccion direccionList = new Direccion(id_direccion, street, numeration,
+                        crossing_1, crossing_2, colonia, id_cliente);
+                direccions.add(direccionList);
             }
-            return false;
-
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                preparedStatement.close();
-                conexion.closeConnection();
-            } catch (SQLException ex) {
-                Logger.getLogger(EmpleadoDao.class.getName()).log(Level.SEVERE, null, ex);
-            }
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-        return true;
-    }
-
-    public int getGeneratedId() {
-        return generatedId;
-    }
-
-    public void setGeneratedId(int generatedId) {
-        this.generatedId = generatedId;
+        return direccions;
     }
 }
-
