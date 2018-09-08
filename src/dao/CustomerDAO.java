@@ -17,7 +17,18 @@ import java.util.List;
 
 public class CustomerDAO implements CRUDInterface<Customer> {
 
-    private static final String SQL_READ_ALL = "SELECT * FROM Clientes";
+    private static final String SQL_READ_ALL = "SELECT c.id_cliente, " +
+            "c.nom_cliente, " +
+            "c.tel_cliente, " +
+            "d.id_direccion, " +
+            "d.calle, d.numeracion, " +
+            "d.cruzamiento_1, " +
+            "d.cruzamiento_2, " +
+            "d.colonia, " +
+            "d.id_cliente " +
+            "FROM Clientes c " +
+            "JOIN Direccion d " +
+            "USING (id_cliente)";
 
     private static final Conexion conexion = Conexion.getInstance();
 
@@ -45,10 +56,7 @@ public class CustomerDAO implements CRUDInterface<Customer> {
     @Override
     public List<Customer> readAll() {
 
-        List<Customer> customer = new ArrayList<>();
-
-        Direccion direccion = new Direccion();
-        DireccionDao direccionDao = new DireccionDao();
+        List<Customer> customerList = new ArrayList<>();
 
         PreparedStatement preparedStatement;
         ResultSet resultSet;
@@ -59,20 +67,27 @@ public class CustomerDAO implements CRUDInterface<Customer> {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int id_cliente = resultSet.getInt(1);
+                int id_customer = resultSet.getInt(1);
                 String name = resultSet.getString(2);
                 String cellphone = resultSet.getString(3);
+                int id_address = resultSet.getInt(4);
+                int street = resultSet.getInt(5);
+                int numeration = resultSet.getInt(6);
+                int crossing_1 = resultSet.getInt(7);
+                int crossing_2 = resultSet.getInt(8);
+                String colony = resultSet.getString(9);
 
-                //Obtiene la dirección del cliente actual
-                direccion = direccionDao.read(id_cliente);
+                Direccion direccion =  new Direccion(id_address, street, numeration,
+                        crossing_1, crossing_2, colony, id_customer);
 
-                Customer customerList = new Customer(id_cliente, name, cellphone, direccion);
-                customer.add(customerList);
+                Customer customer = new Customer(id_customer, name, cellphone, direccion.toString());
+
+                customerList.add(customer);
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
 
-        return customer;
+        return customerList;
     }
 }
