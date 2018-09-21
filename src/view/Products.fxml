@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductsViewController">
+    <children>
+        <Text fill="#232323" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+            <font>
+                <Font name="Cocon-Regular" size="24.0" />
+            </font>
+        </Text>
+        <TableView fx:id="productTableView" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
+            <columns>
+                <TableColumn fx:id="idColumn" prefWidth="50.0" text="id" />
+                <TableColumn fx:id="nameColumn" prefWidth="200.0" text="nombre" />
+                <TableColumn fx:id="priceColumn" prefWidth="100.0" text="precio" />
+            <TableColumn fx:id="sizeColumn" prefWidth="100.0" text="tamaño" />
+            </columns>
+        </TableView>
+    </children>
+</AnchorPane>
