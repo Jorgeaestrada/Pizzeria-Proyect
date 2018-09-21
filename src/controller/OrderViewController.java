@@ -1,6 +1,5 @@
 package controller;
 
-import dao.CustomerDAO;
 import dao.OrderDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

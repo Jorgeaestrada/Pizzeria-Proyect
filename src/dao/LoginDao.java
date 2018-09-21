@@ -13,7 +13,7 @@ import model.Employee;
 
 public class LoginDao implements LoginInterface {
 
-    private static final String SQL_READ = "SELECT * FROM model.Empleado WHERE usuario = ?";
+    private static final String SQL_READ = "SELECT * FROM Empleado WHERE usuario = ?";
 
     private static final Conexion conexion = Conexion.getInstance();
 

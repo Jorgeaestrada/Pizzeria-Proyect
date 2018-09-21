@@ -15,7 +15,7 @@ import java.util.List;
  * PENDIENTE DE REVISIÓN!!
  */
 
-public class CustomerDAO implements CRUDInterface<Customer> {
+public class CustomerDao implements CRUDInterface<Customer> {
 
     private static final String SQL_READ_ALL = "SELECT c.id_cliente, " +
             "c.nom_cliente, " +

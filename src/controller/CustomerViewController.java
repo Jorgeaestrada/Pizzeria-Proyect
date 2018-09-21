@@ -1,6 +1,6 @@
 package controller;
 
-import dao.CustomerDAO;
+import dao.CustomerDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -39,7 +39,7 @@ public class CustomerViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-        CustomerDAO customerDAO = new CustomerDAO();
+        CustomerDao customerDAO = new CustomerDao();
 
         idColumn.setCellValueFactory(
                 new PropertyValueFactory<>("id_customer")

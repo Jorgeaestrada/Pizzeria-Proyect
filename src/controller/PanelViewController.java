@@ -29,6 +29,8 @@ public class PanelViewController implements Initializable {
     @FXML
     private Button customerBtn;
 
+    @FXML
+    private Button productBtn;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -74,6 +76,18 @@ public class PanelViewController implements Initializable {
             e.printStackTrace();
         }
     }
+    }
+
+    @FXML
+    void setProductView(MouseEvent event) {
+        if (event.getTarget() == productBtn){
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Products.fxml"));
+            try {
+                borderPane.setCenter(fxmlLoader.load());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
 }
