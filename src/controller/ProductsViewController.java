@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import model.Order;
 import model.Products;
 
@@ -33,6 +35,14 @@ public class ProductsViewController implements Initializable {
 
     private ObservableList<Products> observableList;
 
+    @FXML
+    private TextField customerField;
+
+    @FXML
+    private TextField prizeField;
+
+    @FXML
+    private TextField sizeField;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -54,5 +64,35 @@ public class ProductsViewController implements Initializable {
         observableList = FXCollections.observableArrayList(orderDao.readAll());
 
         productTableView.setItems(observableList);
+
+        productTableView.getSelectionModel().selectedItemProperty().addListener(
+                (observable, oldValue, newValue) -> selectedItem(newValue));
+    }
+
+    public void selectedItem(Products products){
+        customerField.setText(products.getName());
+        prizeField.setText(String.valueOf(products.getPrice()));
+        sizeField.setText(products.getSize());
+    }
+
+    @FXML
+    void create(MouseEvent event) {
+        sizeField.getText();
+        prizeField.getText();
+        customerField.getText();
+    }
+
+    @FXML
+    void delete(MouseEvent event) {
+        sizeField.getText();
+        prizeField.getText();
+        customerField.getText();
+    }
+
+    @FXML
+    void update(MouseEvent event) {
+        sizeField.getText();
+        prizeField.getText();
+        customerField.getText();
     }
 }

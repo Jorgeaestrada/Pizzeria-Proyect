@@ -1,25 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ProductsViewController">
     <children>
-        <Text fill="#232323" layoutX="10.0" layoutY="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
-            <font>
-                <Font name="Cocon-Regular" size="24.0" />
-            </font>
-        </Text>
-        <TableView fx:id="productTableView" layoutX="10.0" layoutY="10.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="100.0">
-            <columns>
-                <TableColumn fx:id="idColumn" prefWidth="50.0" text="id" />
-                <TableColumn fx:id="nameColumn" prefWidth="200.0" text="nombre" />
-                <TableColumn fx:id="priceColumn" prefWidth="100.0" text="precio" />
-            <TableColumn fx:id="sizeColumn" prefWidth="100.0" text="tamaño" />
-            </columns>
-        </TableView>
+      <SplitPane dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <items>
+          <AnchorPane SplitPane.resizableWithParent="false">
+               <children>
+                    <Text fill="#232323" strokeType="OUTSIDE" strokeWidth="0.0" text="Productos" AnchorPane.leftAnchor="25.0" AnchorPane.topAnchor="25.0">
+                        <font>
+                            <Font name="Cocon-Regular" size="24.0" />
+                        </font>
+                    </Text>
+                    <TableView fx:id="productTableView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
+                        <columns>
+                            <TableColumn fx:id="idColumn" prefWidth="50.0" text="id" />
+                            <TableColumn fx:id="nameColumn" prefWidth="200.0" text="nombre" />
+                            <TableColumn fx:id="priceColumn" prefWidth="100.0" text="precio" />
+                        <TableColumn fx:id="sizeColumn" prefWidth="100.0" text="tamaño" />
+                        </columns>
+                    </TableView>
+                  <TextField promptText="Buscar . . ." AnchorPane.leftAnchor="200.0" AnchorPane.rightAnchor="100.0" AnchorPane.topAnchor="25.0" />
+                  <Button mnemonicParsing="false" text="Button" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="25.0" />
+               </children>
+            </AnchorPane>
+          <AnchorPane maxWidth="250.0" minWidth="250.0" prefWidth="250.0" SplitPane.resizableWithParent="false">
+               <children>
+                  <GridPane alignment="CENTER" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                     <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="INFORMACIÓN" GridPane.columnSpan="2" GridPane.halignment="CENTER">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label text="Nombre" GridPane.rowIndex="2" />
+                        <TextField fx:id="customerField" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <Label text="Precio" GridPane.rowIndex="4" />
+                        <TextField fx:id="prizeField" GridPane.columnSpan="2" GridPane.rowIndex="5" />
+                        <Label text="Tamaño" GridPane.rowIndex="6" />
+                        <TextField fx:id="sizeField" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                     </children>
+                  </GridPane>
+                  <HBox AnchorPane.bottomAnchor="10.0">
+                     <children>
+                        <Button mnemonicParsing="false" onMouseClicked="#create" text="Nueva">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onMouseClicked="#update" text="Acualizar">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button mnemonicParsing="false" onMouseClicked="#delete" text="Borrar">
+                           <HBox.margin>
+                              <Insets left="5.0" right="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+        </items>
+      </SplitPane>
     </children>
 </AnchorPane>

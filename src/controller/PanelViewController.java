@@ -35,7 +35,9 @@ public class PanelViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Order.fxml"));
+
         try {
+
             borderPane.setCenter(fxmlLoader.load());
         } catch (IOException e) {
             e.printStackTrace();

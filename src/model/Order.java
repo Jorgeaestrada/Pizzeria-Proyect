@@ -2,19 +2,30 @@ package model;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.scene.control.Button;
 
 public class Order {
 
+    private SimpleIntegerProperty orderId;
     private SimpleStringProperty customer;
     private SimpleStringProperty deliver;
     private SimpleIntegerProperty price;
     private SimpleStringProperty date;
 
-    public Order(String customer, String deliver, int price, String date) {
+    public Order(int orderId, String customer, String deliver, int price, String date) {
+        this.orderId = new SimpleIntegerProperty(orderId);
         this.customer = new SimpleStringProperty(customer);
         this.deliver = new SimpleStringProperty(deliver);
         this.price = new SimpleIntegerProperty(price);
         this.date = new SimpleStringProperty(date);
+    }
+
+    public int getOrderId() {
+        return orderId.get();
+    }
+
+    public void setOrderId(int orderId) {
+        this.orderId.set(orderId);
     }
 
     public String getCustomer() {
@@ -48,4 +59,5 @@ public class Order {
     public void setDate(String date) {
         this.date.set(date);
     }
+
 }
