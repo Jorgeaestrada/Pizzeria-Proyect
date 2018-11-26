@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="AutoCompleter">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/AutoCompleter.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

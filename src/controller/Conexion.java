@@ -19,8 +19,6 @@ public class Conexion {
     private final String URL = "jdbc:mysql://localhost:3306/pizzeria";
     private final String USERNAME = "root";
     private final String PASSWORD = "";
-    private Statement statement;
-    private ResultSet resultSet;
 
     //Clase que conecta la aplicación a una base de datos
     private Conexion() {
