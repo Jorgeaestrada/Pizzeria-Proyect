@@ -17,6 +17,9 @@ public class LoginDao implements LoginInterface {
 
     private static final Conexion conexion = Conexion.getInstance();
 
+    public LoginDao() {
+    }
+
     @Override
     public boolean authenticate(Employee e) {
         PreparedStatement preparedStatement;
@@ -33,7 +36,7 @@ public class LoginDao implements LoginInterface {
 
                 if (e.getPassword().equals(resultSet.getString(3))) {
 
-                    e.setIdEmpleado(resultSet.getInt(1));
+                    e.setIdUser(resultSet.getInt(1));
                     e.setUsername(resultSet.getString(2));
 
                     return true;

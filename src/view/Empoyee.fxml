@@ -15,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.UserViewController">
+<AnchorPane xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EmployeeViewController">
    <children>
       <SplitPane dividerPositions="0.29797979797979796" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <items>
@@ -28,7 +28,6 @@
                   </Text>
                   <TableView fx:id="userTableView" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="80.0">
                      <columns>
-                        <TableColumn fx:id="idColumn" prefWidth="50.0" text="id" />
                         <TableColumn fx:id="nameColumn" prefWidth="200.0" text="nombre" />
                         <TableColumn fx:id="phoneColumn" prefWidth="100.0" text="Telefono" />
                      </columns>
@@ -51,8 +50,6 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                      </rowConstraints>
                      <children>
                         <Label text="INFORMACIÓN" GridPane.columnSpan="2" GridPane.halignment="CENTER">
@@ -61,26 +58,24 @@
                            </font>
                         </Label>
                         <Label text="Nombre" GridPane.rowIndex="2" />
-                        <TextField fx:id="customerField" GridPane.columnSpan="2" GridPane.rowIndex="3" />
-                        <Label text="Precio" GridPane.rowIndex="4" />
-                        <TextField fx:id="prizeField" GridPane.columnSpan="2" GridPane.rowIndex="5" />
-                        <Label text="Tamaño" GridPane.rowIndex="6" />
-                        <TextField fx:id="sizeField" GridPane.columnSpan="2" GridPane.rowIndex="7" />
+                        <TextField fx:id="userField" GridPane.columnSpan="2" GridPane.rowIndex="3" />
+                        <Label text="Telefono" GridPane.rowIndex="4" />
+                        <TextField fx:id="phoneField" GridPane.columnSpan="2" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <HBox AnchorPane.bottomAnchor="10.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Nueva">
+                        <Button mnemonicParsing="false" onMouseClicked="#create" text="Nuevo">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Acualizar">
+                        <Button mnemonicParsing="false" onMouseClicked="#update" text="Acualizar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>
                         </Button>
-                        <Button mnemonicParsing="false" text="Borrar">
+                        <Button mnemonicParsing="false" onMouseClicked="#delete" text="Borrar">
                            <HBox.margin>
                               <Insets left="5.0" right="5.0" />
                            </HBox.margin>

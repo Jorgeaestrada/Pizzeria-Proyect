@@ -1,17 +1,17 @@
 package controller;
 
 import dao.ProductsDao;
+import dao.TamanioDao;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import model.Order;
 import model.Products;
+import model.Tamanio;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -35,6 +35,8 @@ public class ProductsViewController implements Initializable {
 
     private ObservableList<Products> observableList;
 
+    private ObservableList<String> tamanioList;
+
     @FXML
     private TextField customerField;
 
@@ -42,11 +44,12 @@ public class ProductsViewController implements Initializable {
     private TextField prizeField;
 
     @FXML
-    private TextField sizeField;
+    private ChoiceBox<String> sizeMenu;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ProductsDao orderDao = new ProductsDao();
+        TamanioDao tamanioDao = new TamanioDao();
 
         idColumn.setCellValueFactory(
                 new PropertyValueFactory<>("id_pizza")
@@ -62,8 +65,10 @@ public class ProductsViewController implements Initializable {
         );
 
         observableList = FXCollections.observableArrayList(orderDao.readAll());
+        tamanioList = FXCollections.observableArrayList(tamanioDao.readAll());
 
         productTableView.setItems(observableList);
+        sizeMenu.setItems(tamanioList);
 
         productTableView.getSelectionModel().selectedItemProperty().addListener(
                 (observable, oldValue, newValue) -> selectedItem(newValue));
@@ -72,26 +77,24 @@ public class ProductsViewController implements Initializable {
     public void selectedItem(Products products){
         customerField.setText(products.getName());
         prizeField.setText(String.valueOf(products.getPrice()));
-        sizeField.setText(products.getSize());
+        sizeMenu.setValue(products.getSize());
     }
 
     @FXML
     void create(MouseEvent event) {
-        sizeField.getText();
         prizeField.getText();
         customerField.getText();
+        sizeMenu.getSelectionModel().getSelectedItem();
     }
 
     @FXML
     void delete(MouseEvent event) {
-        sizeField.getText();
         prizeField.getText();
         customerField.getText();
     }
 
     @FXML
     void update(MouseEvent event) {
-        sizeField.getText();
         prizeField.getText();
         customerField.getText();
     }

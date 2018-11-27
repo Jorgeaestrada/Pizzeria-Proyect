@@ -24,7 +24,6 @@ import dao.LoginDao;
  */
 
 public class LoginViewController implements Initializable {
-    
 
     @FXML
     private TextField usernameField;
@@ -43,17 +42,17 @@ public class LoginViewController implements Initializable {
         String username = usernameField.getText();
         String password = passwordField.getText();
 
-        employee.setUsername(username);
-        employee.setPassword(password);
-
         //si el formulario esta vacio
         if (!username.equals("") && !password.equals("")) {
             LoginDao loginDao = new LoginDao();
 
+            employee.setUsername(username);
+            employee.setPassword(password);
+
             if (loginDao.authenticate(employee)) {
 
                 //Si el usuario existe
-                //Cargar vista principal  
+                //Cargar vista principal
                 stage.hide(); //optional
                 stage.setScene(scene);
                 stage.show();

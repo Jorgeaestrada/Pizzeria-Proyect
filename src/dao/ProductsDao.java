@@ -16,6 +16,10 @@ public class ProductsDao implements CRUDInterface<Products> {
 
     private static final Conexion conexion = Conexion.getInstance();
 
+    private static final String SQL_CREATE = "SELECT p.id_pizza, p.nombre, p.precio_pizza, t.tamanio " +
+            "FROM Pizza p, Tamanio t " +
+            "WHERE t.id_tamanio = p.id_tamanio ";
+
     private static final String SQL_READ_ALL = "SELECT p.id_pizza, p.nombre, p.precio_pizza, t.tamanio " +
             "FROM Pizza p, Tamanio t " +
             "WHERE t.id_tamanio = p.id_tamanio ";

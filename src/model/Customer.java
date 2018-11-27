@@ -12,15 +12,15 @@ public class Customer {
     private SimpleIntegerProperty id_customer;
     private SimpleStringProperty name;
     private SimpleStringProperty phoneNumber;
-    private SimpleStringProperty direccion;
+    private Direccion direccion;
 
     public Customer (){}
 
-    public Customer(int id_customer, String name, String phoneNumber, String direccion) {
+    public Customer(int id_customer, String name, String phoneNumber, Direccion direccion) {
         this.id_customer = new SimpleIntegerProperty(id_customer);
         this.name = new SimpleStringProperty(name);
         this.phoneNumber = new SimpleStringProperty(phoneNumber);
-        this.direccion = new SimpleStringProperty(direccion);
+        this.direccion = direccion;
     }
 
     public int getId_customer() {
@@ -59,15 +59,11 @@ public class Customer {
         this.phoneNumber.set(phoneNumber);
     }
 
-    public String getDireccion() {
-        return direccion.get();
-    }
-
-    public SimpleStringProperty direccionProperty() {
+    public Direccion getDireccion() {
         return direccion;
     }
 
-    public void setDireccion(String direccion) {
-        this.direccion.set(direccion);
+    public void setDireccion(Direccion direccion) {
+        this.direccion = direccion;
     }
 }

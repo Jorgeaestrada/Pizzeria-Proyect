@@ -59,7 +59,7 @@ public class PanelViewController implements Initializable {
     @FXML
     void setUserView(MouseEvent event) {
         if (event.getTarget() == userBtn){
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/User.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/view/Empoyee.fxml"));
         try {
             borderPane.setCenter(fxmlLoader.load());
         } catch (IOException e) {

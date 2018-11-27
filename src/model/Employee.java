@@ -14,6 +14,17 @@ public class Employee {
     private SimpleStringProperty password;
     private SimpleStringProperty name;
     private SimpleStringProperty phoneNumber;
+    private SimpleIntegerProperty status;
+
+    public Employee(int idUser, String username, String password, String name,
+                String phoneNumber, int status) {
+        this.idEmpleado = new SimpleIntegerProperty(idUser);
+        this.username = new SimpleStringProperty(username);
+        this.password = new SimpleStringProperty(password);
+        this.name = new SimpleStringProperty(name) ;
+        this.phoneNumber = new SimpleStringProperty(phoneNumber);
+        this.status = new SimpleIntegerProperty(status);
+    }
 
     public Employee() {
         this.idEmpleado = new SimpleIntegerProperty(0);
@@ -23,21 +34,13 @@ public class Employee {
         this.phoneNumber = new SimpleStringProperty("");
     }
 
-    public Employee(int idEmpleado, String username, String password, String name,
-                    String phoneNumber) {
-        this.idEmpleado = new SimpleIntegerProperty(idEmpleado);
-        this.username = new SimpleStringProperty(username);
-        this.password = new SimpleStringProperty(password);
-        this.name = new SimpleStringProperty(name);
-        this.phoneNumber = new SimpleStringProperty(phoneNumber);
-    }
 
-    public void setIdEmpleado(int idEmpleado) {
-        this.idEmpleado.set(idEmpleado);
-    }
-
-    public int getIdEmpleado() {
+    public int getIdUser() {
         return idEmpleado.get();
+    }
+
+    public void setIdUser(int idUser) {
+        this.idEmpleado.set(idUser);
     }
 
     public String getUsername() {
@@ -56,20 +59,28 @@ public class Employee {
         this.password.set(password);
     }
 
-    public void setName(String name) {
-        this.name.set(name); //To change body of generated methods, choose Tools | Templates.
-    }
-
     public String getName() {
-        return name.get(); //To change body of generated methods, choose Tools | Templates.
+        return name.get();
     }
 
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber.set(phoneNumber); //To change body of generated methods, choose Tools | Templates.
+    public void setName(String name) {
+        this.name.set(name);
     }
 
     public String getPhoneNumber() {
-        return phoneNumber.get(); //To change body of generated methods, choose Tools | Templates.
+        return phoneNumber.get();
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber.set(phoneNumber);
+    }
+
+    public int getStatus() {
+        return status.get();
+    }
+
+    public void setStatus(int status) {
+        this.status.set(status);
     }
 
     @Override

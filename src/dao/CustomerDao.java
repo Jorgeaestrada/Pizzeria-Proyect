@@ -32,7 +32,6 @@ public class CustomerDao implements CRUDInterface<Customer> {
 
     private static final Conexion conexion = Conexion.getInstance();
 
-
     @Override
     public boolean create(Customer c) {
         return false;
@@ -80,7 +79,7 @@ public class CustomerDao implements CRUDInterface<Customer> {
                 Direccion direccion =  new Direccion(id_address, street, numeration,
                         crossing_1, crossing_2, colony, id_customer);
 
-                Customer customer = new Customer(id_customer, name, cellphone, direccion.toString());
+                Customer customer = new Customer(id_customer, name, cellphone, direccion);
 
                 customerList.add(customer);
             }

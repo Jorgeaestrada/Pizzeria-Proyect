@@ -3,27 +3,47 @@ package dao;
 import controller.Conexion;
 import interfaces.CRUDInterface;
 import model.Customer;
-import model.Direccion;
 import model.Employee;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *PENDIENTE DE REVISIÓN!!
- */
-
-
 public class EmployeeDao implements CRUDInterface<Employee> {
 
-    private static final String SQL_READ_ALL = "SELECT * FROM Empleado";
-
     private static final Conexion conexion = Conexion.getInstance();
+
+    private static final String SQL_CREATE = "INSERT INTO Empleado " +
+            "(usuario, contrasenia, nom_empleado, tel_empleado, estado)" +
+            "VALUES (?, ?, ?, ?, ?)";
+
+    private static final String SQL_READ_ALL = "SELECT * FROM Empleado; ";
+
     @Override
     public boolean create(Employee c) {
+        try {
+            PreparedStatement statement = conexion.getConnection().prepareStatement(SQL_CREATE);
+            //statement.setInt(1, 3);
+            statement.setString(1, "admin");
+            statement.setString(2, "admin");
+            statement.setString(3, c.getName());
+            statement.setString(4, c.getPhoneNumber());
+            statement.setInt(5, 1);
+
+            if (statement.executeUpdate() > 0) {
+                JOptionPane.showMessageDialog(null, "Usuario creado exitosamente");
+                return true;
+            } else {
+                JOptionPane.showMessageDialog(null, "Ha habido un problema," +
+                        " contacte al administrador");
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 
@@ -45,8 +65,7 @@ public class EmployeeDao implements CRUDInterface<Employee> {
     @Override
     public List<Employee> readAll() {
 
-
-        List<Employee> employee = new ArrayList<>();
+        List<Employee> employeeList = new ArrayList<>();
 
         PreparedStatement preparedStatement;
         ResultSet resultSet;
@@ -57,18 +76,24 @@ public class EmployeeDao implements CRUDInterface<Employee> {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                int id_empleado = resultSet.getInt(1);
-                String username = resultSet.getString(2);
-                String password= resultSet.getString(3);
-                String employee_name = resultSet.getString(4);
-                String cellphone = resultSet.getString(5);
-                Employee employeeList = new Employee(id_empleado, username, password, employee_name, cellphone);
-                employee.add(employeeList);
+                //int idUser = resultSet.getInt(1);
+                //String username = resultSet.getString(2);
+                //String password = resultSet.getString(3);
+                String name = resultSet.getString(4);
+                String phoneNumber = resultSet.getString(5);
+                //int userStatus = resultSet.getInt(6);
+
+                Employee employee = new Employee();
+                employee.setName(name);
+                employee.setPhoneNumber(phoneNumber);
+
+                employeeList.add(employee);
             }
         } catch (SQLException e1) {
             e1.printStackTrace();
         }
 
-        return employee;
+        return employeeList;
+
     }
 }
