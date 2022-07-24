@@ -1,4 +1,4 @@
-<h1 align="center" id="title">Pizzeria-Proyect</h1>
+<h1 align="center" id="title">Pizzeria-Project</h1>
 
 <p align="center"><img src="https://socialify.git.ci/jorgeaestrada/Pizzeria-Proyect/image?font=Inter&language=1&owner=1&pattern=Solid&theme=Dark" alt="project-image"></p>
 
