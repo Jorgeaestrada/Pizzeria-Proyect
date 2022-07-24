@@ -1,8 +1,8 @@
 <h1 align="center" id="title">Pizzeria-Project</h1>
 
-<p align="center"><img src="https://socialify.git.ci/jorgeaestrada/Pizzeria-Proyect/image?font=Inter&language=1&owner=1&pattern=Solid&theme=Dark" alt="project-image"></p>
+<p align="center"><img src="https://socialify.git.ci/jorgeaestrada/Pizzeria-Project/image?font=Inter&language=1&owner=1&pattern=Solid&theme=Dark" alt="project-image"></p>
 
-<p id="description">Pizzeria-Proyect is a desktop program developed in java and javafx in order to improve the processes of capturing customer, product and user information in a pizza store
+<p id="description">Pizzeria-Project is a desktop program developed in java and javafx in order to improve the processes of capturing customer, product and user information in a pizza store
 </p>
 
 ## Table of Contents
@@ -35,7 +35,7 @@ Here're some of the project's features:
 2. Download Java SE Development Kit 18.0.1.1 https://www.oracle.com/java/technologies/downloads/ and install it https://computingforgeeks.com/install-oracle-java-18-on-ubuntu-debian/ 
 3. Download JavaFX https://gluonhq.com/products/javafx/
 4. Open the project with Intellij IDEA, install and configure JavaFX SDK 18.0.1 to work along Intellij IDEA https://openjfx.io/openjfx-docs/#install-javafx
-5. Run the proyect and enjoy it.
+5. Run the project and enjoy it.
 
 ## The process 
 ### Built with
